@@ -1,25 +1,19 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
 
+import Image from './modules/Image';
+import Page from './modules/Page';
+import ImageState from './context/image/ImageState';
+
+const config = require('./config/default.json');
+const applicationID = config.userName;
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <ImageState>
+      <div className='App'>
+        <Page />
+      </div>
+    </ImageState>
   );
 }
 

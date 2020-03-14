@@ -1,38 +1,85 @@
-.App {
-  text-align: center;
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
 }
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+body {
+  background-color: black;
 }
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.main {
   display: flex;
-  flex-direction: column;
+  flex-wrap: wrap;
+  align-items: flex-start;
+}
+
+.box {
+  margin: 20px;
+  border-radius: 10px;
+  display: grid;
+
+  background-color: #2f3492;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto 1fr 30px;
+  width: 300px;
+  height: auto;
+
+  grid-template-areas:
+    'title title'
+    'picture picture'
+    'up down';
+  grid-column-gap: 20px;
+  grid-row-gap: 20px;
+}
+.title {
+  padding: 10px 20px 0 20px;
+  grid-area: title;
+  color: #f4f9ff;
+  border-radius: 10px 10px 0 0;
+}
+.text {
+  font-weight: bold;
+}
+.container {
+  display: flex;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+  grid-area: picture;
+  overflow: hidden;
+  padding: 0 20px;
+  border-radius: 10px;
+}
+.picture {
+  width: 100%;
+  border-radius: 10px;
+}
+
+.upvote {
+  grid-area: up;
+  margin: 0 0 10px 20px;
   color: white;
+  justify-self: center;
+}
+.icon {
+  display: inline-flex;
+  align-self: center;
+  padding-right: 5px;
 }
 
-.App-link {
-  color: #61dafb;
+.icon svg,
+.icon img {
+  height: 1em;
+  width: 1em;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.icon.baseline svg,
+.icon img {
+  top: 0.125em;
+  position: relative;
+}
+
+.downvote {
+  grid-area: down;
+  margin: 0 20px 10px 0;
+  color: #fff;
+  justify-self: center;
 }
