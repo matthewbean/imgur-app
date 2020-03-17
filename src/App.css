@@ -5,8 +5,10 @@
 }
 body {
   background-color: black;
+  padding: 10px;
 }
-.main {
+.loading {
+  color: white;
 }
 
 .box {
@@ -37,10 +39,12 @@ body {
 .container {
   display: flex;
   align-items: center;
+  border: none;
+  cursor: pointer;
   justify-content: center;
   grid-area: picture;
   overflow: hidden;
-  padding: 0 20px;
+  margin: 0 20px;
   border-radius: 10px;
 }
 .picture {
@@ -96,4 +100,29 @@ body {
   /* change div to reference your elements you put in <Masonry> */
   background-color: #2f3492;
   margin-bottom: 30px;
+}
+/*navbar*/
+.logo {
+  color: white;
+  display: inline-block;
+}
+nav {
+  display: inline-block;
+}
+#page {
+  margin: 0 0 0 20px;
+}
+
+/* album page*/
+.album {
+  padding: 15px;
+  width: 100%;
+  max-width: 400px;
+  background-color: #555;
+  margin: auto;
+}
+.album-image {
+  width: 100%;
+  margin-bottom: 10px;
+  display: block;
 }

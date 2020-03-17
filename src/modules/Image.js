@@ -1,8 +1,16 @@
-import React, { useContext, Fragment } from 'react';
+import React, { Fragment, useContext } from 'react';
+import { Link } from 'react-router-dom';
+import ImageContext from '../context/image/imageContext';
 const views = require('../assets/icons/eye.svg');
 const upvote = require('../assets/icons/up-arrow.svg');
 
 const Image = ({ item }) => {
+  const imageContext = useContext(ImageContext);
+  const { loadAlbum, setLoading } = imageContext;
+  const openAlbum = () => {
+    setLoading();
+    loadAlbum(item.id);
+  };
   if (!item.images) {
     return <Fragment></Fragment>;
   }
@@ -12,7 +20,7 @@ const Image = ({ item }) => {
         <div className='title'>
           <div className='text'>{item.title}</div>
         </div>
-        <a href={item.link} className='container'>
+        <Link to='/post' onClick={openAlbum} className='container'>
           <video
             src={item.images[0].link}
             className='picture'
@@ -20,7 +28,7 @@ const Image = ({ item }) => {
             muted
             loop
           />
-        </a>
+        </Link>
         <div className='upvote'>
           <div className='icon baseline'>
             <img className='eye' src={views} />
@@ -41,9 +49,9 @@ const Image = ({ item }) => {
       <div className='title'>
         <div className='text'>{item.title}</div>
       </div>
-      <a href={item.link} className='container'>
+      <Link to='/post' onClick={openAlbum} className='container'>
         <img src={item.images[0].link} className='picture' />
-      </a>
+      </Link>
       <div className='upvote'>
         <div className='icon baseline'>
           <img className='eye' src={views} />
