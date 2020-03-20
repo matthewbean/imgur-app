@@ -5,9 +5,8 @@ import Masonry from 'react-masonry-css';
 
 const Page = () => {
   const imageContext = useContext(ImageContext);
-  const { data, reload, setLoading } = imageContext;
+  const { data, reload, setLoading, loading } = imageContext;
   useEffect(() => {
-    // Update the document title using the browser API
     setLoading();
     reload();
   }, []);
@@ -18,7 +17,7 @@ const Page = () => {
     940: 2,
     640: 1
   };
-  if (data === null || data === []) {
+  if (loading === true) {
     return <div className='loading'>LOADING</div>;
   }
   return (
