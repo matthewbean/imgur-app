@@ -30,11 +30,9 @@ const Page = () => {
         className='my-masonry-grid'
         columnClassName='my-masonry-grid_column'
       >
-        {data
-          .filter((item, i) => i <= 100)
-          .map(item => (
-            <Image item={item} key={item.id} />
-          ))}
+        {data.map((item, i) => (
+          <Image item={item} key={item.id} index={i} />
+        ))}
       </Masonry>
     </div>
   );

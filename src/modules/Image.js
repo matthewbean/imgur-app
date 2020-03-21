@@ -4,17 +4,15 @@ import ImageContext from '../context/image/imageContext';
 const views = require('../assets/icons/eye.svg');
 const upvote = require('../assets/icons/up-arrow.svg');
 
-const Image = ({ item }) => {
+const Image = ({ item, index }) => {
   const imageContext = useContext(ImageContext);
-  const { loadAlbum, setLoading, loadComments } = imageContext;
+  const { loadAlbum, setLoading, loadComments, setIndex } = imageContext;
   const openAlbum = () => {
     setLoading();
+    setIndex(index);
     loadComments(item.id);
     loadAlbum(item.id);
   };
-  if (!item.images) {
-    return <Fragment></Fragment>;
-  }
   if (item.images[0].type === 'video/mp4') {
     return (
       <div className='box'>

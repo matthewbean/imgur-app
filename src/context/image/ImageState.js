@@ -6,7 +6,8 @@ import {
   LOAD_ALBUM,
   SET_LOADING,
   CLEAR_PAGE,
-  LOAD_COMMENTS
+  LOAD_COMMENTS,
+  SET_INDEX
 } from './types';
 
 const config = require('../../config/default.json');
@@ -16,6 +17,7 @@ const ImageState = props => {
     data: null,
     loading: true,
     current: [],
+    index: null,
     comments: []
   };
   const [state, dispatch] = useReducer(imageReducer, initialState);
@@ -38,10 +40,12 @@ const ImageState = props => {
     )
       .then(res => res.text())
       .then(res => JSON.parse(res))
+      .then(res => res.data)
+      .then(res => res.filter((item, i) => item.images && i <= 100))
       .then(res =>
         dispatch({
           type: RELOAD,
-          payload: res.data
+          payload: res
         })
       )
       .catch(error => console.log('error', error));
@@ -59,8 +63,16 @@ const ImageState = props => {
     });
   };
 
+  //set index for going to next album
+  const setIndex = index => {
+    dispatch({
+      type: SET_INDEX,
+      payload: index
+    });
+  };
+
   //load album
-  const loadAlbum = id => {
+  const loadAlbum = (id, index) => {
     var myHeaders = new Headers();
     myHeaders.append('Authorization', `Client-ID ${config.userName}`);
     var requestOptions = {
@@ -76,7 +88,8 @@ const ImageState = props => {
           type: LOAD_ALBUM,
           payload: res.data
         })
-      );
+      )
+      .catch(error => console.log('error', error));
   };
 
   //load comments
@@ -113,9 +126,11 @@ const ImageState = props => {
       value={{
         data: state.data,
         loading: state.loading,
+        index: state.index,
         current: state.current,
         comments: state.comments,
         reload,
+        setIndex,
         loadAlbum,
         setLoading,
         clearPage,

@@ -4,7 +4,29 @@ import Comments from '../modules/Comments';
 
 const Current = () => {
   const imageContext = useContext(ImageContext);
-  const { current, loading } = imageContext;
+  const {
+    data,
+    current,
+    loading,
+    index,
+    loadAlbum,
+    loadComments,
+    setLoading,
+    setIndex
+  } = imageContext;
+
+  const next = () => {
+    setLoading();
+    setIndex(index + 1);
+    loadAlbum(data[index + 1].id);
+    loadComments(data[index + 1].id);
+  };
+  const previous = () => {
+    setLoading();
+    setIndex(index + 1);
+    loadAlbum(data[index - 1].id);
+    loadComments(data[index - 1].id);
+  };
 
   if (loading === true) {
     return <div className='loading'>LOADING</div>;
@@ -13,6 +35,10 @@ const Current = () => {
   return (
     <div className='album-page'>
       <div className='album'>
+        <div className='controls'>
+          <button onClick={previous}>Previous</button>
+          <button onClick={next}>Next</button>
+        </div>
         <div className='album-title'>{current.title}</div>
         {current.images.map(item =>
           item.type === 'video/mp4' ? (

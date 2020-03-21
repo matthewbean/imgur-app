@@ -4,7 +4,8 @@ import {
   EXIT_FULLSCREEN,
   SET_LOADING,
   CLEAR_PAGE,
-  LOAD_COMMENTS
+  LOAD_COMMENTS,
+  SET_INDEX
 } from './types';
 
 export default (state, action) => {
@@ -24,6 +25,11 @@ export default (state, action) => {
       return {
         ...state,
         loading: true
+      };
+    case SET_INDEX:
+      return {
+        ...state,
+        index: action.payload
       };
     case LOAD_ALBUM:
       return {

@@ -209,6 +209,19 @@ select {
   margin: 60px auto;
   border-radius: 10px;
 }
+.controls {
+  display: flex;
+  justify-content: space-between;
+}
+.controls > button {
+  background-color: #34495e;
+  padding: 5px 10px;
+  border-radius: 5px;
+  color: white;
+  font-size: 1.2rem;
+  border: none;
+  cursor: pointer;
+}
 .album-title {
   color: white;
   font-size: 1.25rem;
