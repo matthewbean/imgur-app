@@ -7,8 +7,11 @@ const Page = () => {
   const imageContext = useContext(ImageContext);
   const { data, reload, setLoading, loading } = imageContext;
   useEffect(() => {
-    setLoading();
-    reload();
+    if (!data) {
+      console.log('array is emty');
+      setLoading();
+      reload();
+    }
   }, []);
   //set breakpoints for columns
   const breakpointColumnsObj = {
@@ -30,7 +33,7 @@ const Page = () => {
         {data
           .filter((item, i) => i <= 100)
           .map(item => (
-            <Image item={item} />
+            <Image item={item} key={item.id} />
           ))}
       </Masonry>
     </div>

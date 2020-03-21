@@ -18,7 +18,7 @@ export default (state, action) => {
     case CLEAR_PAGE:
       return {
         ...state,
-        data: []
+        data: null
       };
     case SET_LOADING:
       return {

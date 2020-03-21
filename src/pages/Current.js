@@ -1,6 +1,6 @@
-import React, { useEffect, useContext } from 'react';
+import React, { useContext } from 'react';
 import ImageContext from '../context/image/imageContext';
-import Comments from './Comments';
+import Comments from '../modules/Comments';
 
 const Current = () => {
   const imageContext = useContext(ImageContext);
@@ -11,21 +11,25 @@ const Current = () => {
   }
 
   return (
-    <div class='album-page'>
+    <div className='album-page'>
       <div className='album'>
         <div className='album-title'>{current.title}</div>
         {current.images.map(item =>
           item.type === 'video/mp4' ? (
-            <video
-              src={item.link}
-              className='album-image'
-              controls
-              muted
-              loop
-            />
+            <div key={item.id}>
+              <video
+                src={item.link}
+                key={item.id}
+                className='album-image'
+                controls
+                muted
+                loop
+              />
+              <p className='album-description'>{item.description}</p>
+            </div>
           ) : (
-            <div>
-              <img className='album-image' src={item.link} />
+            <div key={item.id}>
+              <img className='album-image' alt='missing item' src={item.link} />
               <p className='album-description'>{item.description}</p>
             </div>
           )

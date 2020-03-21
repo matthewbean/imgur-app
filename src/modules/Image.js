@@ -17,7 +17,7 @@ const Image = ({ item }) => {
   }
   if (item.images[0].type === 'video/mp4') {
     return (
-      <div class='box'>
+      <div className='box'>
         <div className='title'>
           <div className='text'>{item.title}</div>
         </div>
@@ -32,13 +32,13 @@ const Image = ({ item }) => {
         </Link>
         <div className='upvote'>
           <div className='icon baseline'>
-            <img className='eye' src={views} />
+            <img className='eye' alt='views:' src={views} />
           </div>
           {item.views}
         </div>
         <div className='downvote'>
           <div className='icon baseline'>
-            <img className='eye' src={upvote} />
+            <img className='eye' alt='upvotes:' src={upvote} />
           </div>
           {item.score}
         </div>
@@ -46,22 +46,22 @@ const Image = ({ item }) => {
     );
   }
   return (
-    <div class='box'>
+    <div className='box'>
       <div className='title'>
         <div className='text'>{item.title}</div>
       </div>
       <Link to='/post' onClick={openAlbum} className='container'>
-        <img src={item.images[0].link} className='picture' />
+        <img src={item.images[0].link} alt='missing item' className='picture' />
       </Link>
       <div className='upvote'>
         <div className='icon baseline'>
-          <img className='eye' src={views} />
+          <img className='eye' alt='views:' src={views} />
         </div>
         {item.views}
       </div>
       <div className='downvote'>
         <div className='icon baseline'>
-          <img className='eye' src={upvote} />
+          <img className='eye' alt='upvotes:' src={upvote} />
         </div>
         {item.score}
       </div>

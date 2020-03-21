@@ -12,6 +12,7 @@ const Comments = () => {
         {comments.map(item => (
           <Comment
             author={item.author}
+            key={item.id}
             comment={item.comment}
             children={item.children}
           />

@@ -13,7 +13,7 @@ const config = require('../../config/default.json');
 
 const ImageState = props => {
   const initialState = {
-    data: [],
+    data: null,
     loading: true,
     current: [],
     comments: []
@@ -22,6 +22,7 @@ const ImageState = props => {
 
   //reload
   const reload = (page1 = 'hot', page2 = 'viral') => {
+    console.log('reloaded');
     var myHeaders = new Headers();
     myHeaders.append('Authorization', `Client-ID ${config.userName}`);
 

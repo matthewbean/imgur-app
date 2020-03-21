@@ -53,7 +53,7 @@ const Navbar = () => {
         </div>
 
         <Link to='/' onClick={load} className='button'>
-          <img src={arrow} className='arrow' />
+          <img src={arrow} alt='GO' className='arrow' />
         </Link>
       </div>
     </div>
