@@ -3,7 +3,8 @@ import {
   LOAD_ALBUM,
   EXIT_FULLSCREEN,
   SET_LOADING,
-  CLEAR_PAGE
+  CLEAR_PAGE,
+  LOAD_COMMENTS
 } from './types';
 
 export default (state, action) => {
@@ -28,8 +29,12 @@ export default (state, action) => {
       return {
         ...state,
         current: action.payload,
-        fullscreen: true,
         loading: false
+      };
+    case LOAD_COMMENTS:
+      return {
+        ...state,
+        comments: action.payload
       };
     case EXIT_FULLSCREEN:
       return {

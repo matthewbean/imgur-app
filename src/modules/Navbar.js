@@ -52,7 +52,7 @@ const Navbar = () => {
           </select>
         </div>
 
-        <Link to='/' onClick={require} className='button'>
+        <Link to='/' onClick={load} className='button'>
           <img src={arrow} className='arrow' />
         </Link>
       </div>

@@ -6,9 +6,10 @@ const upvote = require('../assets/icons/up-arrow.svg');
 
 const Image = ({ item }) => {
   const imageContext = useContext(ImageContext);
-  const { loadAlbum, setLoading } = imageContext;
+  const { loadAlbum, setLoading, loadComments } = imageContext;
   const openAlbum = () => {
     setLoading();
+    loadComments(item.id);
     loadAlbum(item.id);
   };
   if (!item.images) {
